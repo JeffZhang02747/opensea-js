@@ -158,6 +158,10 @@ export class OpenSeaSDK {
   // Multiply gas estimate by this factor when making transactions
   public gasIncreaseFactor = DEFAULT_GAS_INCREASE_FACTOR;
 
+  public gaslimitFromUser = 0;
+  public maxPriorityFeeFromUser = "";
+  public maxFeeFromUser = "";
+
   private _networkName: Network;
   private _wyvernProtocol: WyvernProtocol;
   private _wyvernProtocolReadOnly: WyvernProtocol;
@@ -1138,6 +1142,16 @@ export class OpenSeaSDK {
         accountAddress,
         domain,
       });
+    }
+
+    if (this.maxPriorityFeeFromUser) {
+      this.seaport.maxPriorityFeePerGas = this.maxPriorityFeeFromUser;
+    }
+    if (this.maxFeeFromUser) {
+      this.seaport.maxFeePerGas = this.maxFeeFromUser;
+    }
+    if (this.gaslimitFromUser) {
+      this.seaport.gasLimit = this.gaslimitFromUser;
     }
 
     const { executeAllActions } = await this.seaport_v1_4.fulfillOrder({

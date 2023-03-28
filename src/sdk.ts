@@ -1145,13 +1145,13 @@ export class OpenSeaSDK {
     }
 
     if (this.maxPriorityFeeFromUser) {
-      this.seaport.maxPriorityFeePerGas = this.maxPriorityFeeFromUser;
+      this.seaport_v1_4.maxPriorityFeePerGas = this.maxPriorityFeeFromUser;
     }
     if (this.maxFeeFromUser) {
-      this.seaport.maxFeePerGas = this.maxFeeFromUser;
+      this.seaport_v1_4.maxFeePerGas = this.maxFeeFromUser;
     }
     if (this.gaslimitFromUser) {
-      this.seaport.gasLimit = this.gaslimitFromUser;
+      this.seaport_v1_4.gasLimit = this.gaslimitFromUser;
     }
 
     const { executeAllActions } = await this.seaport_v1_4.fulfillOrder({
